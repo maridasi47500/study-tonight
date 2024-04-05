@@ -1,0 +1,34 @@
+<%= form_with(model: mytutoriallist) do |form| %>
+  <% if mytutoriallist.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(mytutoriallist.errors.count, "error") %> prohibited this mytutoriallist from being saved:</h2>
+
+      <ul>
+        <% mytutoriallist.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :mytutorial_id, style: "display: block" %>
+    <%= form.number_field :mytutorial_id %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+  <%=form.fields_for :tutorials do |ff|%>
+        <p><span class="tutoriels-numero-1">*</span> tutoriel n°<%=ff.index+1%></p>
+          <div>
+                <%= ff.label :name, style: "display: block" %>
+                    <%= ff.text_field :name %>
+                      </div>
+                        <%end%>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<span class="close" onclick="overlay.style.display='none';">X</span>
+<div class="card" style="width: 18rem;" >
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item logintitle">$ Login <span id="annonce">_</span></li>
+                  </ul>
+                  <div class="card-body">
+
+
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email, "NOM D'UTILISATEUR" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, "MOT DE PASSE" %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "SE CONNECTER" %>
+  </div>
+<% end %>
+
+</div>
+</div>
