@@ -1,6 +1,6 @@
 class Mytutorial < ApplicationRecord
-  has_many :mytutoriallists
-  accepts_nested_attributes_for :mytutoriallists
+  has_many :sometutorials
+  accepts_nested_attributes_for :sometutorials
   def pic=(uploaded_io)
   File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
       file.write(uploaded_io.read)

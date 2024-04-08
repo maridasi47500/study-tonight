@@ -1,0 +1,32 @@
+<div id="mytutorial1">
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <%paspremier=false%>
+  <%idinids=false%>
+  <%@sometutorial.mytutoriallists.each do |hey|%>
+    <%idinids=hey.tutorial_ids.include?(params[:myid].to_i)%>
+    <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button <%= !idinids ? "collapsed" : ""%>" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%=hey.id%>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%=hey.id%>">
+              <%=hey.name%>
+                                  </button>
+                                      </h2>
+                                      <div id="panelsStayOpen-collapse<%=hey.id%>" class="accordion-collapse collapse <%=!idinids ? "" : "show"%>">
+                                                  <div class="accordion-body">
+                                                    <ul>
+                                                      <%hey.tutorials.each do |hi|%>
+                                                        <li>
+                                                        <%=link_to hi.name,tuto_sometutorial_path(id:hi.mytutoriallist.sometutorial.id, myid:hi.id), class: "btn btn-primary #{hi.id == params["myid"].to_i ? "mybtntuto" : "mybtntuto1"}"%>
+                                                        </li>
+                                                      <%end%>
+                                                    </ul>
+                                                                  </div>
+                                                                      </div>
+                                                                        </div>
+                                                                        <%paspremier=true%>
+                                                                                                                                              <%end%>
+</div>
+<div id="heythere">
+  <h1><%=@tutorial.name%></h1>
+  <%=simple_format(@tutorial.content)%>
+</div>
+</div>

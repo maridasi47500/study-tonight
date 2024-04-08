@@ -6,19 +6,12 @@
 </header>
 <p>liste des tutoriels</p>
 <ul class="no-bullets">
-  <%@mytutorial.mytutoriallists.each do |x|%>
-    <li class="mytutoriallist"><%=x.name%> <%= link_to "add tutorials", add_mytutoriallist_path(x) %>
-    <%if x.tutorials.length > 0%>
-      <ul class="no-bullets no-bullets1">
-    <%x.tutorials.each_with_index do |hey,i|%>
-      <li class="mytutorial"><span class="tutoriels-numero"><%=i+1%></span><%=hey.name%></li>
-    <%end%>
-      </ul>
-    <%end%>
+  <%@mytutorial.sometutorials.each do |x|%>
+    <li class="mytutoriallist"><%=x.title%> <%= link_to "voir tutorials", sometutorial_path(x) %>
 
-    </li>
   <%end%>
 </ul>
+
 <div>
   <%= link_to "Ajouter des tutoriels", add_mytutorial_path(@mytutorial) %> |
   <%= link_to "Edit this mytutorial", edit_mytutorial_path(@mytutorial) %> |

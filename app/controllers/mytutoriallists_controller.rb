@@ -29,7 +29,7 @@ class MytutoriallistsController < ApplicationController
 
     respond_to do |format|
       if @mytutoriallist.save
-        format.html { redirect_to mytutorial_url(@mytutoriallist.mytutorial), notice: "Mytutoriallist was successfully created." }
+        format.html { redirect_to sometutorial_url(@mytutoriallist.sometutorial), notice: "Mytutoriallist was successfully created." }
         format.json { render :show, status: :created, location: @mytutoriallist }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class MytutoriallistsController < ApplicationController
   def update
     respond_to do |format|
       if @mytutoriallist.update(mytutoriallist_params)
-        format.html { redirect_to mytutorial_url(@mytutoriallist.mytutorial), notice: "Mytutoriallist was successfully updated." }
+        format.html { redirect_to sometutorial_url(@mytutoriallist.sometutorial), notice: "Mytutoriallist was successfully updated." }
         format.json { render :show, status: :ok, location: @mytutoriallist }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -69,6 +69,6 @@ class MytutoriallistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def mytutoriallist_params
-      params.require(:mytutoriallist).permit(:mytutorial_id, :name,:tutorials_attributes=>{})
+      params.require(:mytutoriallist).permit(:sometutorial_id, :name,:tutorials_attributes=>{})
     end
 end

@@ -1,0 +1,26 @@
+<div id="mytutorial1">
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <%@sometutorial.mytutoriallists.each do |hey|%>
+    <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%=hey.id%>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%=hey.id%>">
+              <%=hey.name%>
+                                  </button>
+                                      </h2>
+                                      <div id="panelsStayOpen-collapse<%=hey.id%>" class="accordion-collapse collapse <%=show%>">
+                                                  <div class="accordion-body">
+                                                    <ul>
+                                                      <%hey.tutorials.each do |hi|%>
+                                                        <li><a class="btn btn-primary <%=hi.id == params["myid"].to_i ? "mybtntuto" : "mybtntuto1"%>"><%=hi.name%></a></li>
+                                                      <%end%>
+                                                    </ul>
+                                                                  </div>
+                                                                      </div>
+                                                                        </div>
+                                                                                                                                              <%end%>
+</div>
+<div id="heythere">
+  <h1><%=@tutorial.name%></h1>
+  <%=simple_format(@tutorial.content)%>
+</div>
+</div>

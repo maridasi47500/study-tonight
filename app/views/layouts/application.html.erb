@@ -30,8 +30,8 @@
                                                                                                                         <li class="dropdown-submenu">
                                                                                                                           <a class="dropdown-item" tabindex="-1" href="#" onclick="window.location='/mytutorials/<%=cat.id%>';" id="navbarDropdownCat<%=cat.id%>" role="button" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false"><img src="/uploads/<%=cat.pic%>" width="50" height="50"/><%=cat.name%></a>
                                                                                                                         <div class="dropdown-menu" aria-labelledby="navbarDropdownCat<%=cat.id%>">
-                                                                                                                        <%cat.mytutoriallists.each do |hey|%>
-                                                                                                                            <a class="dropdown-item" href="/mytutorials/<%=hey.id%>"><%=hey.name%></a>
+                                                                                                                        <%cat.sometutorials.each do |hey|%>
+                                                                                                                            <a class="dropdown-item" href="/sometutorials/<%=hey.id%>"><%=hey.title%></a>
                                                                                                                         <%end%>
                                                                                                                                                     <div class="dropdown-divider"></div>
                                                                                                                     </div>

@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+<%=@sometutorial.title%>
+
+<ul class="no-bullets">
+    <%@sometutorial.mytutoriallists.each do |x|%>
+
+                      <li class="mytutoriallist"><%=x.name%> <%= link_to "add tutorials", add_mytutoriallist_path(x) %>
+                          <%if x.tutorials.length > 0%>
+                                  <ul class="no-bullets no-bullets1">
+                                        <%x.tutorials.each_with_index do |hey,i|%>
+                                                <li class="mytutorial"><span class="tutoriels-numero"><%=i+1%></span><%=link_to hey.name, tuto_sometutorial_path(id: @sometutorial.id, myid: hey.id)%></li>
+                                                    <%end%>
+                                                          </ul>
+                                                              <%end%>
+
+                                                                      </li>
+
+                                                                          <%end%>
+</ul>
+<div>
+  <%= link_to "add tutorial", add_sometutorial_path(@sometutorial) %> |
+  <%= link_to "Edit this sometutorial", edit_sometutorial_path(@sometutorial) %> |
+  <%= link_to "Back to sometutorials", sometutorials_path %>
+
+  <%= button_to "Destroy this sometutorial", @sometutorial, method: :delete %>
+</div>

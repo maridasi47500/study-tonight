@@ -1,14 +1,17 @@
 class MytutorialsController < ApplicationController
-  before_action :set_mytutorial, only: %i[ show edit update destroy add]
+  before_action :set_mytutorial, only: %i[ show edit update destroy add tuto]
 
   # GET /mytutorials or /mytutorials.json
+  def tuto
+  end
   def index
     @mytutorials = Mytutorial.all
   end
 
   # GET /mytutorials/1 or /mytutorials/1.json
   def add
-    @mytutorial.mytutoriallists.new
+    @mytutorial.sometutorials.new
+    
     render :edit
   end
   def show
@@ -69,6 +72,6 @@ class MytutorialsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def mytutorial_params
-      params.require(:mytutorial).permit(:name, :pic, :description,:mytutoriallists_attributes=>{})
+      params.require(:mytutorial).permit(:name, :pic, :description,:sometutorials_attributes=>{})
     end
 end

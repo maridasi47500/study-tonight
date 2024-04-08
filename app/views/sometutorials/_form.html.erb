@@ -1,0 +1,39 @@
+<%= form_with(model: sometutorial) do |form| %>
+  <% if sometutorial.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(sometutorial.errors.count, "error") %> prohibited this sometutorial from being saved:</h2>
+
+      <ul>
+        <% sometutorial.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :mytutorial_id, style: "display: block" %>
+    <%= form.number_field :mytutorial_id %>
+  </div>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+  <%=form.fields_for :mytutoriallists do |fff|%>
+        <p><span class="tutoriels-numero-1">*</span> tutoriel n°<%=fff.index+1%></p>
+          <div>
+                <%= fff.label :name, style: "display: block" %>
+                    <%= fff.text_field :name %>
+                      </div>
+  <%end%>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

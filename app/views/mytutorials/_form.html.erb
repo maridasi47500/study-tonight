@@ -25,18 +25,25 @@
     <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
   </div>
-  <%=form.fields_for :mytutoriallists do |f|%>
+  <%=form.fields_for :sometutorials do |f|%>
     <p><span class="tutoriels-numero"><%=f.index+1%></span> tutoriels n°<%=f.index+1%></p>
   <div>
-    <%= f.label :name, style: "display: block" %>
-    <%= f.text_field :name %>
+    <%= f.label :title, style: "display: block" %>
+    <%= f.text_field :title %>
   </div>
-  <%=f.fields_for :tutorials do |ff|%>
+  <%=f.fields_for :mytutoriallists do |fff|%>
+    <p><span class="tutoriels-numero-1">*</span> tutoriel n°<%=fff.index+1%></p>
+  <div>
+    <%= fff.label :name, style: "display: block" %>
+    <%= fff.text_field :name %>
+  </div>
+  <%=fff.fields_for :tutorials do |ff|%>
     <p><span class="tutoriels-numero-1">*</span> tutoriel n°<%=ff.index+1%></p>
   <div>
     <%= ff.label :name, style: "display: block" %>
     <%= ff.text_field :name %>
   </div>
+  <%end%>
   <%end%>
   <%end%>
 
