@@ -199,3 +199,11 @@ div#mytutorial1 {
 		        background: white;
 			    color: black;
 		    }
+
+		    textarea#tutorial_content {
+			        width: 90%;
+				    left: 4%;
+				        right: 4%;
+					    position: relative;
+					        height: 600px;
+					}

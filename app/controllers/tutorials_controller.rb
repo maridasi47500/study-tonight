@@ -38,7 +38,7 @@ class TutorialsController < ApplicationController
   def update
     respond_to do |format|
       if @tutorial.update(tutorial_params)
-        format.html { redirect_to tutorial_url(@tutorial), notice: "Tutorial was successfully updated." }
+        format.html { redirect_to tuto_sometutorial_path(id:@tutorial.mytutoriallist.sometutorial.id, myid:@tutorial.id), notice: "Tutorial was successfully updated." }
         format.json { render :show, status: :ok, location: @tutorial }
       else
         format.html { render :edit, status: :unprocessable_entity }

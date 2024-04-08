@@ -27,6 +27,7 @@
 </div>
 <div id="heythere">
   <h1><%=@tutorial.name%></h1>
+  <%=link_to "edit",edit_tutorial_path(@tutorial)%>
   <%=simple_format(@tutorial.content)%>
 </div>
 </div>
