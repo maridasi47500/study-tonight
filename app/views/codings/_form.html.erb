@@ -1,0 +1,52 @@
+<%= form_with(model: coding) do |form| %>
+  <% if coding.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(coding.errors.count, "error") %> prohibited this coding from being saved:</h2>
+
+      <ul>
+        <% coding.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :programminglanguage_id, style: "display: block" %>
+    <%= form.select :programminglanguage_id, Programminglanguage.all.collect {|x|[x.name, x.id]} %>
+  </div>
+
+  <div>
+    <%= form.label :pic, style: "display: block" %>
+    <%= form.file_field :pic %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+  <%=form.fields_for :somecodings do |f|%>
+    <p>some coding #<%=f.index+1%> </p>
+    <div class="card">
+  <div class="card-body">
+    <%= f.label :name, style: "display: block" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="card-body">
+    <%= f.label :pic, style: "display: block" %>
+    <%= f.file_field :pic %>
+  </div>
+  </div>
+  <%end%>
+
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

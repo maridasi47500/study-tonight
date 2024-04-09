@@ -1,0 +1,46 @@
+<p style="color: green"><%= notice %></p>
+ <div id="myheader">
+<h1><%= @coding.name %></h1>
+
+ </div>
+    <img class="codingpic" src="/uploads/<%=@coding.pic%>"/>
+ <p class="codingdescription"><%=@coding.description%></p>
+ <%paspremier=false%>
+ <div class="accordion" id="accordionPanelsStayOpenExample1">
+   <%@coding.somecodings.each do |hey|%>
+   <div class="my-accordion">
+               <img src="/uploads/<%=hey.pic%>"/>
+               <span>
+               <%=hey.name%>
+
+               <%=link_to "add some coding to it",add_somecoding_path(hey.id)%>
+               </span>
+   </div>
+     <div class="accordion-item">
+           <h2 class="accordion-header">
+             <button class="accordion-button <%=paspremier ? "collapsed" : ""%>" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%=hey.id%>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%=hey.id%>">
+
+
+                                   </button>
+                                       </h2>
+                                       <div id="panelsStayOpen-collapse<%=hey.id%>" class="accordion-collapse collapse <%=paspremier ? "" : "show"%>">
+                                                   <div class="accordion-body">
+                                                     <ul>
+                                                     <%hey.anycodings.each do |hi|%>
+                                                       <li><%=link_to hi.name, mycoding_coding_path(id: @coding.id, myid: hi.id)%></li>
+                                                   <%end%>
+                                                     </ul>
+                                                                   </div>
+                                                                       </div>
+                                                                         </div>
+                                                                         <%paspremier=true%>
+                                                                       <%end%>
+ </div>
+
+<div>
+  <%= link_to "add this coding", add_coding_path(@coding) %> |
+  <%= link_to "Edit this coding", edit_coding_path(@coding) %> |
+  <%= link_to "Back to codings", codings_path %>
+
+  <%= button_to "Destroy this coding", @coding, method: :delete %>
+</div>

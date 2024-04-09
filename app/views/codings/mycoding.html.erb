@@ -1,0 +1,69 @@
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <%idinids=false%>
+    <div class="accordion" id="accordionPanelsStayOpenExample1">
+         <%@coding.somecodings.each do |hey|%>
+           <%idinids=hey.anycodings.include?(params[:myid].to_i)%>
+              <div class="my-accordion">
+                               <img src="/uploads/<%=hey.pic%>"/>
+                                              <span>
+                                                               <%=hey.name%>
+
+                                                                                             </span>
+                                                                                                </div>
+                                                                                                     <div class="accordion-item">
+                                                                                                                  <h2 class="accordion-header">
+                                                                                                                                 <button class="accordion-button <%=idinids ? "collapsed" : ""%>" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%=hey.id%>" aria-expanded="true" aria-controls="panelsStayOpen-collapse<%=hey.id%>">
+                                                               <%=hey.name%>
+
+
+                                                                                                                                                                      </button>
+                                                                                                                                                                                                             </h2>
+                                                                                                                                                                                                                                                    <div id="panelsStayOpen-collapse<%=hey.id%>" class="accordion-collapse collapse <%=idinids ? "" : "show"%>">
+                                                                                                                                                                                                                                                                                                         <div class="accordion-body">
+                                                                                                                                                                                                                                                                                                                                                                <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                       <%hey.anycodings.each do |hi|%>
+                                                                                                                                                                                                                                                                                                                                                                                                                         <li class="<%=hi.id == params[:myid].to_i ? "mybulletlist" : ""%>"><%=link_to hi.name, mycoding_coding_path(id: @coding.id, myid: hi.id)%></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <%end%>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <%end%>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+</div>
+
+<div class="card-group">
+    <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Card title
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open menu</span>
+
+                </h5>
+                <p class="card-text">
+                <h1><%=@anycoding.name%></h1>
+                <%=simple_format(@anycoding.content)%>
+                </p>
+                                      </div>
+                                        </div>
+                                          <div class="card">
+                                                    <div class="card-body">
+                                                      <h5 class="card-title"><> Code editor</h5>
+                                                      <p class="card-text">
+                                                      <div hidden id="mylangageid"><%=@coding.programminglanguage_id%></div>
+                                                        <textarea id="mycode">
+                                                          <%=@anycoding.code%>
+                                                        </textarea>
+                                                        
+                                                      </p>
+                                                                  <p class="card-text"><button type="button" onclick="executecode();return false;" id="executecode">execute code</button></p>
+                                                                            </div>
+                                                                              </div>
+                                                                                <div class="card">
+                                                                                          <div class="card-body">
+                                                                                                  <h5 class="card-title">Output</h5>
+                                                                                                  <p class="card-text myoutputcode" id="myoutputcode">
+                                                                                                  </p>
+                                                                                                                  </div>
+                                                                                                                    </div>
+</div>

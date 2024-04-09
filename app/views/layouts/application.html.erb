@@ -13,14 +13,43 @@
 
   <body  onload="clignotement();">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="/">WELCOME PAGE</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                   </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                           <ul class="navbar-nav mr-auto">
+
+                                                                                <%if @anycoding && @coding%>
                                                                               <li class="nav-item dropdown form-inline my-2 my-lg-0">
+                                                                                <a href="<%=coding_path(@coding)%>"><- Home</a>
+                                                                              </li>
+                                                                                <%end%>
+
+
+                                                                              <li class="nav-item dropdown form-inline my-2 my-lg-0">
+                                                                                <%if Coding.all.length > 0%>
+                                                                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                                    Mes Codes
+                                                                                                            </a>
+                                                                                                                    <ul class="dropdown-menu multilevel " aria-labelledby="navbarDropdown1">
+                                                                                                                      <%Coding.all.each do |cat|%>
+                                                                                                                        <li class="dropdown-submenu">
+                                                                                                                          <a class="dropdown-item" tabindex="-1" href="#" onclick="window.location='/codings/<%=cat.id%>';" id="navbar1DropdownCat<%=cat.id%>" role="button" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false"><img src="/uploads/<%=cat.pic%>" width="50" height="50"/><%=cat.name%></a>
+                                                                                                                        <div class="dropdown-menu" aria-labelledby="navbar1DropdownCat<%=cat.id%>">
+                                                                                                                        <%cat.somecodings.each do |hey|%>
+                                                                                                                            <a class="dropdown-item" href="/somecodings/<%=hey.id%>"><%=hey.name%></a>
+                                                                                                                        <%end%>
+                                                                                                                                                    <div class="dropdown-divider"></div>
+                                                                                                                    </div>
+                                                                              </li>
+
+                                                                                                                              <%end%>
+
+
+                                                                                                                                                                      </ul>
+                                                                                                                              <%end%>
                                                                                 <%if Mytutorial.all.length > 0%>
                                                                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                                                     Mes Tutoriels
@@ -44,10 +73,10 @@
                                                                                                                               <%end%>
                                                                                                                                                                             </li>
                                   <li class="nav-item active">
-                                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                            <a class="nav-link" href="/programminglanguages">ajouter des langages</a>
                                                   </li>
                                                         <li class="nav-item">
-                                                                  <a class="nav-link" href="#">Link</a>
+                                                                  <a class="nav-link" href="/codings">ajouter des codings</a>
                                                                         </li>
                                                                               <li class="nav-item dropdown">
                                                                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

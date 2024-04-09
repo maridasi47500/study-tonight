@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Anycodings</h1>
+
+<div id="anycodings">
+  <% @anycodings.each do |anycoding| %>
+    <%= render anycoding %>
+    <p>
+      <%= link_to "Show this anycoding", anycoding %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New anycoding", new_anycoding_path %>
