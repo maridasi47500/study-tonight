@@ -222,7 +222,7 @@ div#mytutorial1 {
 						height:260px;
 
 					}
-					img {
+					img.mycodingimg {
 							right: 0;
 								position: fixed;
 									z-index: -1;
@@ -288,4 +288,8 @@ div#mytutorial1 {
 																								}
 																								li.mybulletlist{
 																									list-style:"\002713";
+																														}
+																														#mycode {
+																															width:100%;
+																															height:400px;
 																														}

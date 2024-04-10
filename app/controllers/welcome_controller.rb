@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  include ActionView::Helpers::TextHelper
   protect_from_forgery except: [:code]
   def index
   end
@@ -9,12 +10,16 @@ class WelcomeController < ApplicationController
     mycode=params[:mycode]
     langage=langage.code
     content=mycode
-    p "STR=$'#{langage} <<END\n#{content}END\n' & bash -c $STR"
-    threads << Thread.new { Thread.current[:output] = `STR=$'#{langage} <<END\n#{content}END\n' & bash -c "$STR"`}#jj
-             threads.each do |t|
-                                   t.join
-                                                                @myvalue << t[:output]
-                                                                                                   end
-    render json: {"somecode" => @myvalue}
+    @hey="echo $(#{langage} '\n#{content}\n' 2>&1)"
+    p @hey
+         threads=[]
+                                                                                                             myvalue=""
+                                                                                                                                                threads << Thread.new { Thread.current[:output] =`#{@hey}` }#jj
+                                                                                                                                                                                        threads.each do |t|
+                                                                                                                                                                                                                                             t.join
+                                                                                                                                                                                                                                                                                                         myvalue << t[:output]
+                                                                                                                                                                                                                                                                                                                                                                           end
+                                                                                                                                                                                                                                      p myvalue
+    render json: {"somecode" => simple_format(myvalue)}
   end
 end
